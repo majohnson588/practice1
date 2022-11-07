@@ -48,7 +48,7 @@ int main()
 return 0;
 }
 
-Practise4:
+Practise3:
 #include <stdio.h>
 #include <stdlib.h>
 #include<string.h>
@@ -98,7 +98,7 @@ int main()
         return 0;
 }
 
-Practise5:
+Practise4:
 //设计一个函数，每调用一次增加1
 void Add(int*p)
 {
