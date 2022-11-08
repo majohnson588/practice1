@@ -1,3 +1,101 @@
+函数:
+Example1:
+#include<stdio.h>
+int Add(int x, int y)      //加法自定义函数
+{  
+       int z = 0;
+       z = x + y;
+       return z;
+}
+int main()
+{
+      int a = 10;
+      int b = 20;
+      int sum = Add(a,b);
+
+      printf("%d\n",sum);
+      return 0;
+}
+
+Example2:
+int main()
+{
+    char arr1[] = "bit";
+    char arr2[20] = "###########";
+    strcpy(arr2,arr1);
+    printf("%s %s",arr1,arr2);
+   
+     //strcpy =string copy - 字符串拷贝
+     //strcmp =string compare - 字符串对比
+     //strlen  =string length - 字符串长度有关
+     return 0;
+} 
+
+Example3:
+int main()
+{
+     char arr[] = "hello world";
+     memset(arr, 's', 5);//memset = memory set
+     printf("%s\n",arr);
+     //***** world
+     return 0;
+}
+
+Example4:
+//自定义求两个数间最大值的函数
+//传值调用
+int get_max(int x, int y)
+{
+       if(x>y)
+            return x;
+        else
+            return y;
+}
+int main()
+{
+    int a = 10;
+    int b =  20;
+    //函数的使用
+    int max =get_max(a,b);
+    printf("max = %d\n",max);
+    return 0;
+}
+
+Example5:
+//自定义函数交换数字
+//传址调用
+void Swap1(int a,int b)
+//不能完成任务
+//当实参传给形参的时候
+//形参只是实参的一份临时拷贝
+//对形参的更改是不会影响实参的
+{
+   int tmp = 0;
+        tmp = a;
+             a= b;
+             b = tmp;
+}
+void Swap2(int *pa,int *pb)
+//能够完成任务
+{
+       int tmp = 0;
+       tmp = *pa;//指针的运用
+            *pa= *pb;
+            *pb = tmp;
+}
+
+int main()
+{
+  int  a = 10;
+  int  b = 20;
+  printf("a=%d b=%d\n", a, b);
+   //调用Swap1函数-传值调用
+  Swap2(&a,&b);
+  //调用Swap2函数
+  printf("a=%d b=%d\n", a, b);
+  return 0;
+}
+
 practise1:
 //打印100-200间的素数
 //是素数返回1，不是素数返回0
@@ -135,4 +233,143 @@ int main()
     printf("%d",printf("%d",printf("%d",43)));//"43"为两个字节，"2"为一个字节，所以打印出来的结果是4321
     return 0;
  }
-     
+ 
+函数的递归
+Example1:
+int my_strlen(char* str)//指针变量
+{
+   int count = 0;
+   if(*str != '\0')
+   {
+      return 1+my_strlen(str+1);   
+   }
+   else 
+      return 0;
+}
+int main()
+{
+  char arr[] = "bit";
+  // int len = strlen(arr);
+  //printf("%d\n",len);
+  int len = my_strlen(arr);
+  printf("len=%d\n",len);
+  return 0;
+}
+
+递归与迭代
+Example1:
+//求n的阶乘
+int Fac2(int n)
+{
+    if(n<=1)
+          return 1;
+    else
+          return n*Fac2(n-1);
+}
+int main()
+{
+    //求n的阶乘
+    int n = 0;
+    scanf("%d",&n);
+    ret = Fac2(n);//循环的方式
+    printf("%d\n",ret);
+    return 0;
+}
+
+Example2:
+//求斐波那契数
+A1:测试（效率低下，容易栈溢出）
+int Fib(int n)
+{  
+     if(n<=2)
+         return 1;
+     else  
+         return Fib(n-1)+Fib(n-2);
+}
+int main()
+{
+    int n = 0;
+    int ret = 0;
+    scanf("%d",&n);
+    //TDD - 测试驱动开发,先设计怎么测试，再设计函数怎么实现
+   ret = Fib(n);
+   printf("ret = %d\n",ret);
+   return 0 ;
+}
+A2:优化算法
+int Fib(int n)
+{  
+   int a = 1;
+   int b = 1;
+   int c = 1;
+   while(n>2)
+  {
+        c = a + b;
+        a = b;
+        b = c;
+        n--;
+  }
+  return c;
+}
+int main()
+{
+    int n = 0;
+    int ret = 0;
+    scanf("%d",&n);
+    //TDD - 测试驱动开发,先设计怎么测试，再设计函数怎么实现
+   ret = Fib(n);
+   printf("ret = %d\n",ret);
+   return 0 ;
+}
+
+
+
+数组
+Example1:   
+int main()
+{
+    //创建一个数组-存放整形-10个
+    //int arr[10] = {1，2，3};//不完全初始化,剩下的元素默认初始化为0
+    //char arr2[5] = {‘a',   'b'};
+    //char arr2[5] = {'a',  98};//"98"在ASCII码值中表示小写字母b
+    //char arr3[5] = "ab";//后面还有一个/0
+    printf("%d\n", sizeof(arr4));
+   //sizeof 计算 arr4所占空间的大小
+   //7个元素-char 7*1 = 7
+    printf("%d\n",strlen(arr4));
+    //strlen 求字符串的长度-'\0'之前的字符个数   
+    //[a b c d e f \0]
+    //int n = 5;
+    //char ch[n];//err:[]中只能输入常量，不能输入变量
+    char arr1[] = "abc";
+    char arr2[] = {'a', 'b', 'c'};
+    printf("%d\n",sizeof(arr1));//4
+    printf("%d\n",sizeof(arr2));//3
+    printf("%d\n",strlen(arr1));//3
+    printf("%d\n",strlen(arr2));//随机值
+    return 0;
+}
+
+Example2:
+int main
+{
+      char arr[] = "abcdef";
+      //printf("%c\n", arr[3])
+      int i = 0;
+      for(i=0; i<(int)strlen(arr); i++)
+      {
+            printf("%c ", arr[i]);
+      };
+      int arr[] = {1,2,3,4,5,6,7,8,9,0};
+      int sz = sizeof(arr)/sizeof(arr[0]);
+      int i = 0;
+      for(i=0; i<sz; i++)
+      {
+              printf("%d",arr[i]); 
+      }
+      return 0;
+}
+tips:
+1.strlen和sizeof没有什么关联
+2.strlen是求字符串长度-只能针对字符串求长度 - 库函数 - 使用得引头文件
+3.sizeof计算变量、数组、类型的大小-单位是字节-操作符
