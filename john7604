@@ -334,8 +334,8 @@ int main()
     //char arr2[5] = {'a',  98};//"98"在ASCII码值中表示小写字母b
     //char arr3[5] = "ab";//后面还有一个/0
     printf("%d\n", sizeof(arr4));
-   //sizeof 计算 arr4所占空间的大小
-   //7个元素-char 7*1 = 7
+    //sizeof 计算 arr4所占空间的大小
+    //7个元素-char 7*1 = 7
     printf("%d\n",strlen(arr4));
     //strlen 求字符串的长度-'\0'之前的字符个数   
     //[a b c d e f \0]
@@ -349,6 +349,10 @@ int main()
     printf("%d\n",strlen(arr2));//随机值
     return 0;
 }
+tips:
+1.strlen和sizeof没有什么关联
+2.strlen是求字符串长度-只能针对字符串求长度 - 库函数 - 使用得引头文件
+3.sizeof计算变量、数组、类型的大小-单位是字节-操作符
 
 Example2:
 int main
@@ -394,7 +398,4 @@ int main()
 &arr[8] = 00000053251ffa40
 &arr[9] = 00000053251ffa44
 16进制:0-9 10-15 a b c d e f
-tips:
-1.strlen和sizeof没有什么关联
-2.strlen是求字符串长度-只能针对字符串求长度 - 库函数 - 使用得引头文件
-3.sizeof计算变量、数组、类型的大小-单位是字节-操作符
+地址从低往高走
