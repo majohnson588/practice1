@@ -839,3 +839,42 @@ int main()
       return 0;
   }
   
+结构体变量的定义和初始化
+struct Point
+{
+        int x;
+        int y;
+}p1;                                       //声明类型的同时定义变量p1
+struct Point p2;                           //定义结构体变量p2
+//初始化：定义变量的同时赋初值。
+struct Point p3  =  {x , y};
+
+struct Stu                                    //类型声明
+
+struct S
+{
+      int a;
+      char c;
+      char arr[20];
+      double d;
+};
+
+struct T
+{
+      char ch[10];
+      struct S s;
+      char *pc;
+};
+
+int main()
+{
+      char arr[ ] = "hello bit\n";
+      struct T t = {"hehe",  {100, 'w', "hello world", 3.14}, arr};//结构体的嵌套
+      printf("%s\n", t. ch);//hehe
+      printf("%s\n", t. s. arr);//hello world
+      printf("%lf\n", t .s .d);//3.14
+      printf("%s\n", t .pc);//hello bit
+      return 0;
+}
+
+  
